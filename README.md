@@ -21,8 +21,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
-
+- [x] List anything else that you can get done to improve the app functionality!
+     -- added a custom tip feature where user can enter a custom tip percentage
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:

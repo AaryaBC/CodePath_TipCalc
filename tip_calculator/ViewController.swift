@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var bill2Person: UILabel!
     @IBOutlet weak var bill3Person: UILabel!
     @IBOutlet weak var bill4Person: UILabel!
+    @IBOutlet weak var customTip: UISwitch!
+    @IBOutlet weak var customPercentage: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +37,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculate(_ sender: AnyObject) {
+        var totalTip: Double = 0.0
         let tipPercentages = [0.18,0.2,0.25,0.3]
         let totalBill = Double(billAmount.text!) ?? 0
-        let totalTip = totalBill * tipPercentages[tipControl.selectedSegmentIndex]
+        if customTip.isOn{
+            let customPer = Double(customPercentage.text!) ?? 0
+            totalTip = totalBill * customPer * 0.01
+        }
+        else{
+            totalTip = totalBill * tipPercentages[tipControl.selectedSegmentIndex]
+        }
         let total = totalBill + totalTip
         tipAmount.text = String(format: "$%.2f", totalTip)
         totalAmount.text = String(format: "$%.2f", total)
